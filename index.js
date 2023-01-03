@@ -59,7 +59,7 @@ function calculate(){
     //eval analisa o código javascript e retorna o resultado independente do que for
     const result = eval(input.value)
     resultInput.value = result
-    resultInput.classList.remove =('error') 
+    resultInput.classList.remove('error') 
 }
 
 document.getElementById('copyToClipboard').addEventListener('click', function (ev){
