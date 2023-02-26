@@ -1,9 +1,9 @@
 // criando elementos com as  as informações do html
-
-const main = document.querySelector('main')
 const root = document.querySelector(':root')
+const main = document.querySelector('main')
 const input = document.getElementById('input')
-const resultInput = document.getElementById('result')
+const resultInput = document.getElementById('result') 
+
 
 //bloqueio para o usuário digitar apenas as teclas que serão permitidas 
 //array com somente os elementos que serão permitidos digitar 
@@ -52,45 +52,18 @@ input.addEventListener('keydown' , function (ev){
 
 document.getElementById('equal').addEventListener('click', calculate)
 
-function calculate(){
-    //comando para mostrar mensagem de erro quando o usuario digitar comandos invalidos
-    resultInput.value = 'ERROR'
-    resultInput.classList.add('error')
-    //eval analisa o código javascript e retorna o resultado independente do que for
-    const result = eval(input.value)
-    resultInput.value = result
-    resultInput.classList.remove('error') 
-}
 
-document.getElementById('copyToClipboard').addEventListener('click', function (ev){
-const button = ev.currentTarget
-//se o botão clicado tiver sido clicado muda a palavra para "copied"
-if (button.innerText === 'Copy') {
-    button.innerText ='Copied!'
-    //adiciona as cores dos parametros css para o botão
-    button.classList.add('sucess')
-    //ação para copiar o texto da area de transferencia
-    navigator.clipboard.writeText(resultInput.value)
-}else{
-    button.innerText = 'Copy'
-    button.classList.remove('sucess')
-}
-})
 
-document.getElementById('themeSwitcher').addEventListener('click', function() { 
-    //referencia o tema do atributo data
-    if(main.dataset.theme === 'dark') {
-    //setProperty adiciona um valor e o nome especificado ao objeto de estado atual
-    root.style.setProperty('--bg-color', '#f1f5f9')
-    root.style.setProperty('--border-color', '#aaa')
-    root.style.setProperty('--font-color', '#212529')
-    root.style.setProperty('--primary-color', '#26834a')
-    main.dataset.theme = 'light'
-    } else {
-    root.style.setProperty('--bg-color', '#212529')
-    root.style.setProperty('--border-color', '#666')
-    root.style.setProperty('--font-color', '#f1f5f9')
-    root.style.setProperty('--primary-color', '#4dff91')
-    main.dataset.theme = 'dark'
-    }
-})
+document.getElementById('copyToClipboard').addEventListener('click', copy)
+
+
+document.getElementById('themeSwitcher').addEventListener ('click', theme)
+  
+
+
+import calculate from "./calculate.js"
+import theme from "./theme.js"
+import copy from "./copy.js"
+
+
+
